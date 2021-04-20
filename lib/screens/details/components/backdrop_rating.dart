@@ -2,7 +2,6 @@ import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/models/top_movies_list.dart';
 
 import '../../../constants.dart';
 
@@ -11,12 +10,12 @@ class BackdropAndRating extends StatelessWidget {
     Key key,
     @required this.size,
     @required this.movie,
-    @required this.topMovies,
+    // @required this.topMovies,
   }) : super(key: key);
 
   final Size size;
   final Movie movie;
-  final TopMoviesList topMovies;
+  //final TopMoviesList topMovies;
 
   @override
   Widget build(BuildContext context) {

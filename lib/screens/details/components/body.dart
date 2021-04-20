@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
           BackdropAndRating(
             size: size,
             movie: movie,
-            topMovies: null,
+            // topMovies: null,
           ),
           SizedBox(height: kDefaultPadding / 2),
           TitleDurationAndFabBtn(movie: movie),

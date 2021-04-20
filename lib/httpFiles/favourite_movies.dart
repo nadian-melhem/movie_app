@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie_app/models/movie.dart';
 
-class TopMoviesRequest {
-  TopMoviesRequest();
+class FavMoviesRequest {
+  FavMoviesRequest();
   Future<List<Movie>> fetchMovie() async {
-    final response = await http.get(Uri.https('localhost:27017', 'TOPmovie'));
+    final response = await http.get(Uri.https('localhost:27017', 'FAVmovie'));
     return compute(parseMovies, response.body);
   }
 

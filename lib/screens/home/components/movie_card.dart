@@ -2,7 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/models/top_movies_list.dart';
+
 import 'package:movie_app/screens/details/details_screen.dart';
 import '../../../constants.dart';
 import 'package:favorite_button/favorite_button.dart';
