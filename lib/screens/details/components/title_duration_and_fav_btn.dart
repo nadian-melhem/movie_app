@@ -29,7 +29,7 @@ class TitleDurationAndFabBtn extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Text(
-                      '${2015}',
+                      '${movie.year}',
                       style: TextStyle(color: kTextLightColor),
                     ),
                     SizedBox(width: kDefaultPadding),

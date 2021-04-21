@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
 
-import 'package:movie_app/screens/home/components/recomm_tap.dart';
+import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 
 import '../../../constants.dart';
 import '../../../main.dart';
-import 'favourite_tap.dart';
+import '../../favourite/favourite_tap.dart';
 
 List<Object> taps = [MyApp(), RecTap(), FavTap()];
 

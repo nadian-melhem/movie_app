@@ -4,8 +4,6 @@ import 'package:movie_app/httpFiles/top_movies.dart';
 import 'dart:math' as math;
 
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/screens/home/components/recomm_tap.dart';
-
 import '../../../constants.dart';
 import 'movie_card.dart';
 

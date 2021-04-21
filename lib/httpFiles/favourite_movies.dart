@@ -8,7 +8,7 @@ import 'package:movie_app/models/movie.dart';
 
 class FavMoviesRequest {
   FavMoviesRequest();
-  Future<List<Movie>> fetchMovie() async {
+  Future<List<Movie>> favMovie() async {
     final response = await http.get(Uri.https('localhost:27017', 'FAVmovie'));
     return compute(parseMovies, response.body);
   }

@@ -7,6 +7,7 @@ class Movie {
   final List<String> genres;
   final String director;
   final String poster_path;
+  final String year;
 
   Movie(
       {this.original_title,
@@ -16,7 +17,8 @@ class Movie {
       this.cast,
       this.genres,
       this.director,
-      this.poster_path});
+      this.poster_path,
+      this.year});
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
@@ -27,6 +29,7 @@ class Movie {
         cast: json['cast'],
         genres: json['genres'],
         director: json['director'],
-        poster_path: json['poster_path']);
+        poster_path: json['poster_path'],
+        year: json['year']);
   }
 }
