@@ -8,7 +8,7 @@ import '../../../constants.dart';
 import '../../../main.dart';
 import '../../favourite/favourite_tap.dart';
 
-List<Object> taps = [MyApp(), RecTap(), FavTap()];
+List<Object> taps = [MyApp()]; // RecTap()]; //, FavTap()];
 
 // We need stateful widget because we need to change some sate on our category
 class Categorylist extends StatefulWidget {
@@ -18,7 +18,7 @@ class Categorylist extends StatefulWidget {
 
 class _CategorylistState extends State<Categorylist> {
   int selectedCategory = 0;
-  List<String> categories = ["Top Movies", "Recommended", "Favourit"];
+  List<String> categories = ["Top Movies"]; //, "Recommended"]; //"Favourit"];
   @override
   Widget build(BuildContext context) {
     return Container(

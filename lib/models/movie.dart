@@ -25,7 +25,7 @@ class Movie {
         original_title: json['original_title'],
         vote_average: json['vote_average'],
         runtime: json['runtime'],
-        overview: json['overview'],
+        // overview: json['overview'],
         cast: json['cast'],
         genres: json['genres'],
         director: json['director'],
