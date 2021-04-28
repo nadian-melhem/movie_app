@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/httpFiles/futureTop.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/screens/favourite/favourite_tap.dart';
+import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 import '../../../constants.dart';
 import '../../../main.dart';
 import 'movie_carousel.dart';
 
-List<Object> taps = [MyApp()]; // RecTap()]; //, FavTap()];
+List<Object> taps = [MyApp(), RecTap(), FavTap()];
 
 // We need stateful widget because we need to change some sate on our category
 class Categorylist extends StatefulWidget {
@@ -23,7 +25,7 @@ class _CategorylistState extends State<Categorylist> {
 
   int selectedCategory = 0;
   final TopMoviesRequest request = new TopMoviesRequest();
-  List<String> categories = ["Top Movies"]; //, "Recommended"]; //"Favourit"];
+  List<String> categories = ["Top Movies", "Recommended", "Favourit"];
   @override
   Widget build(BuildContext context) {
     return Container(

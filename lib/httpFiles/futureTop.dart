@@ -32,9 +32,5 @@ class TopFuture extends StatelessWidget {
             return CircularProgressIndicator();
           }),
     );
-
-    setSelectedItem(int selectedItem) {
-      selecteditem = selectedItem;
-    }
   }
 }

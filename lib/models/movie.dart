@@ -2,14 +2,14 @@ import 'dart:convert';
 
 class Movie {
   final String original_title;
-  final double vote_average;
+  final int vote_average;
   final double runtime;
   final String overview;
   List<String> cast;
   final List<String> genres;
   final String director;
   final String poster_path;
-  final int year;
+  final String year;
 
   Movie(
       {this.original_title,

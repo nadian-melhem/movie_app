@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class CastCard extends StatelessWidget {
-  final Map cast;
+  final String cast;
 
   const CastCard({Key key, this.cast}) : super(key: key);
   @override
@@ -18,25 +18,16 @@ class CastCard extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: AssetImage(
-                  cast['image'],
-                ),
+                image: AssetImage("assets/icons/person.svg"),
               ),
             ),
           ),
           SizedBox(height: kDefaultPadding / 2),
           Text(
-            cast['orginalName'],
+            cast,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText2,
             maxLines: 2,
-          ),
-          SizedBox(height: kDefaultPadding / 4),
-          Text(
-            cast['movieName'],
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: kTextLightColor),
           ),
         ],
       ),

@@ -58,7 +58,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
           },
           controller: _pageController,
           physics: ClampingScrollPhysics(),
-          itemCount: 2, // we have 3 demo movies
+          itemCount: 10, // we have 3 demo movies
           itemBuilder: (context, index) => buildMovieSlider(index),
         ),
       ),
