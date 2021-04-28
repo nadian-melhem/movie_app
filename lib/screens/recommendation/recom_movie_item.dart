@@ -26,7 +26,7 @@ class MovieItem extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
-                  Text(this.movie.year),
+                  Text(this.movie.year.toString()),
                 ]),
           )
         ],

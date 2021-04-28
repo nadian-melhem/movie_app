@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/home/components/body.dart';
+import 'package:movie_app/screens/welcome/home_screen.dart';
 //import 'package:movie_app/screens/details/components/body.dart';
 //import 'package:movie_app/screens/welcome/home_screen.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Body(),
+      home: HomeScreen(),
     );
   }
 }

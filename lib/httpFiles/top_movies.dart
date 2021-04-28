@@ -8,19 +8,22 @@ import 'package:movie_app/models/movie.dart';
 
 class TopMoviesRequest {
   TopMoviesRequest();
+
   Future<List<Movie>> fetchMovie() async {
     final response =
-        await http.get(Uri.https('192.168.1.215:5000', 'TOPmovie'));
+        await http.get(Uri.https('mnserver.herokuapp.com', 'TOPMovie'));
+    print(response.body);
     return compute(parseMovies, response.body);
   }
+}
 
-  List<Movie> parseMovies(String responseBody) {
-    final parsed = jsonDecode(responseBody);
+List<Movie> parseMovies(String responseBody) {
+  final parsed = jsonDecode(responseBody);
 
-    return parsed.map<Movie>((json) => Movie.fromJson(json)).toList();
-  }
+  return parsed.map<Movie>((json) => Movie.fromJson(json)).toList();
+}
 
-  /*void sendRequest() {
+/*void sendRequest() {
     FutureBuilder<List<Movie>>(
       future: fetchMovie(),
       builder: (context, snapshot) {
@@ -32,4 +35,3 @@ class TopMoviesRequest {
       },
     );
   }*/
-}

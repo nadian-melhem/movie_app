@@ -1,23 +1,28 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 
 import 'dart:math' as math;
 
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/models/movieList.dart';
 import '../../../constants.dart';
 import 'movie_card.dart';
 
 class MovieCarousel extends StatefulWidget {
+  List<Movie> movies = [];
   @override
+  MovieCarousel({this.movies});
+
   _MovieCarouselState createState() => _MovieCarouselState();
 }
 
 class _MovieCarouselState extends State<MovieCarousel> {
   PageController _pageController;
-
+  final TopMoviesRequest request = new TopMoviesRequest();
+  var futureList;
   int initialPage = 1;
-  Future<List<Movie>> futureMovies;
-  List<Movie> movies;
   @override
   void initState() {
     super.initState();
@@ -28,9 +33,9 @@ class _MovieCarouselState extends State<MovieCarousel> {
       // by default our movie poster
       initialPage: initialPage,
     );
-    final TopMoviesRequest request = new TopMoviesRequest();
-    futureMovies = request.fetchMovie();
-    movies = futureMovies as List<Movie>;
+    //  futureList = request.fetchMovie();
+    //widget.movies = futureList.toList();
+    print("i'm hereeeeeeeeeeeeeeeeeeeeeeeee ");
   }
 
   @override
@@ -53,7 +58,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
           },
           controller: _pageController,
           physics: ClampingScrollPhysics(),
-          itemCount: movies.length, // we have 3 demo movies
+          itemCount: 2, // we have 3 demo movies
           itemBuilder: (context, index) => buildMovieSlider(index),
         ),
       ),
@@ -70,12 +75,13 @@ class _MovieCarouselState extends State<MovieCarousel> {
             // we use clamp so that our value vary from -1 to 1
             value = (value * 0.038).clamp(-1, 1);
           }
+
           return AnimatedOpacity(
             duration: Duration(milliseconds: 350),
             opacity: initialPage == index ? 1 : 0.4,
             child: Transform.rotate(
               angle: math.pi * value,
-              child: MovieCard(movie: movies[index]),
+              child: MovieCard(movie: widget.movies[index]),
               // child: recTap(),
             ),
           );
