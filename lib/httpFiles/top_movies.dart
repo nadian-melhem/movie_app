@@ -10,8 +10,7 @@ class TopMoviesRequest {
   TopMoviesRequest();
 
   Future<List<Movie>> fetchMovie() async {
-    final response =
-        await http.get(Uri.https('mnserver.herokuapp.com', 'TOPMovie'));
+    final response = await http.get(Uri.http('192.168.1.14:5000', 'TOPMovie'));
     print(response.body);
     return compute(parseMovies, response.body);
   }
