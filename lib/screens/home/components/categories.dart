@@ -6,9 +6,10 @@ import 'package:movie_app/screens/favourite/favourite_tap.dart';
 import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 import '../../../constants.dart';
 import '../../../main.dart';
+import 'body.dart';
 import 'movie_carousel.dart';
 
-List<Object> taps = [MyApp(), RecTap(), FavTap()];
+List<Object> taps = [MainPage(), RecTap(), FavTap()];
 
 // We need stateful widget because we need to change some sate on our category
 class Categorylist extends StatefulWidget {
