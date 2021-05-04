@@ -3,8 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/movie_carousel.dart';
-import 'package:movie_app/screens/welcome/body.dart';
-
 import '../constants.dart';
 
 // ignore: must_be_immutable

@@ -11,7 +11,6 @@ import 'package:movie_app/components/social_icon.dart';
 import 'package:movie_app/screens/custome_dialog.dart';
 import 'package:movie_app/screens/home/components/body.dart';
 import 'package:movie_app/screens/log_in/log_in.dart';
-import 'package:movie_app/screens/welcome/body.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,8 +18,15 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SignUpBody(),
-    );
+        body: Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/welcome.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: SignUpBody(),
+    ));
   }
 }
 
@@ -36,74 +42,72 @@ class Body extends State<SignUpBody> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Sign Up",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: size.height * 0.03),
-            SvgPicture.asset("assets/icons/cinema.svg",
-                height: size.height * 0.35),
-            RoundedInput(
-              hintText: "Your Email",
-              onChanged: (value) {
-                email = value;
-              },
-            ),
-            RoundedInput(
-              hintText: "Your Username",
-              onChanged: (value) {
-                username = value;
-              },
-            ),
-            RoundedPassword(
-              onChanged: (value) {
-                passwored = value;
-              },
-            ),
-            RoundedButton(
-                text: "sign up",
-                press: () {
-                  signUp(username, passwored, email);
-                }),
-            AlreadyHaveAnAccountCheck(
-              login: false,
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
-              },
-            ),
-            OrDivider(),
-            Row(
+        child: Stack(children: [
+      Positioned(
+          bottom: 30,
+          right: 0,
+          left: 0,
+          child: SingleChildScrollView(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SocalIcon(
-                  iconSrc: "assets/icons/facebook.svg",
-                  press: () {},
+                RoundedInput(
+                  hintText: "Your Email",
+                  onChanged: (value) {
+                    email = value;
+                  },
                 ),
-                SocalIcon(
-                  iconSrc: "assets/icons/twitter.svg",
-                  press: () {},
+                RoundedInput(
+                  hintText: "Your Username",
+                  onChanged: (value) {
+                    username = value;
+                  },
                 ),
-                SocalIcon(
-                  iconSrc: "assets/icons/google-plus.svg",
-                  press: () {},
+                RoundedPassword(
+                  onChanged: (value) {
+                    passwored = value;
+                  },
                 ),
+                RoundedButton(
+                    text: "Sign Up",
+                    press: () {
+                      signUp(username, passwored, email);
+                    }),
+                AlreadyHaveAnAccountCheck(
+                  login: false,
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LoginScreen();
+                        },
+                      ),
+                    );
+                  },
+                ),
+                /* OrDivider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SocalIcon(
+                      iconSrc: "assets/icons/facebook.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/twitter.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/google-plus.svg",
+                      press: () {},
+                    ),
+                  ],
+                )*/
               ],
-            )
-          ],
-        ),
-      ),
-    );
+            ),
+          ))
+    ]));
   }
 
   signUp(String username, passwored, email) async {

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/httpFiles/futureTop.dart';
-import 'package:movie_app/httpFiles/top_movies.dart';
-import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/side_menu.dart';
-import 'package:movie_app/screens/log_in/log_in.dart';
+import 'package:movie_app/screens/welcome/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'categories.dart';
 import 'genres.dart';
-import 'movie_carousel.dart';
 
 String username;
 
@@ -17,6 +13,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -67,7 +64,7 @@ class _Body extends State<Body> {
     username = sharedPreferences.getString("user");
     if (sharedPreferences.getString("user") == null) {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
+          MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
           (Route<dynamic> route) => false);
     }
   }

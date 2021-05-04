@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/home/components/body.dart';
-import 'package:movie_app/screens/welcome/body.dart';
 import 'package:movie_app/screens/welcome/home_screen.dart';
 //import 'package:movie_app/screens/details/components/body.dart';
 //import 'package:movie_app/screens/welcome/home_screen.dart';
@@ -14,12 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Movie App',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: HomeScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/welcome.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: HomeScreen(),
+        ));
   }
 }

@@ -61,7 +61,9 @@ class _CategorylistState extends State<Categorylist> {
               categories[index],
               style: Theme.of(context).textTheme.headline5.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: index == selectedCategory ? kTextColor : darkblue,
+                    color: index == selectedCategory
+                        ? kSecondaryColor
+                        : kTextColor,
                   ),
             ),
             Container(
