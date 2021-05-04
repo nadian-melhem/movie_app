@@ -9,7 +9,7 @@ class RecMoviesRequest {
   RecMoviesRequest();
   Future<List<Movie>> searchMovie(movieName) async {
     final response =
-        await http.get(Uri.https('192.168.1.215:5000', 'movie', movieName));
+        await http.get(Uri.http('192.168.1.215:5000', 'movie', movieName));
     return compute(parseMovies, response.body);
   }
 

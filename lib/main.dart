@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/home/components/body.dart';
+import 'package:movie_app/screens/welcome/body.dart';
 import 'package:movie_app/screens/welcome/home_screen.dart';
 //import 'package:movie_app/screens/details/components/body.dart';
 //import 'package:movie_app/screens/welcome/home_screen.dart';
