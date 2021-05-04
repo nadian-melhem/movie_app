@@ -33,7 +33,7 @@ class _LogInBodyState extends State<LogInBody> {
   Widget build(BuildContext context) {
     String userEmail, passwored;
     Size size = MediaQuery.of(context).size;
-    return Background(
+    return Container(
         child: SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

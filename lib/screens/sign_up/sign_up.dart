@@ -35,7 +35,7 @@ class Body extends State<SignUpBody> {
   String username, passwored, email;
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Background(
+    return Container(
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

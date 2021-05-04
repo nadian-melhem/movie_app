@@ -4,40 +4,49 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/httpFiles/futureTop.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/screens/home/components/side_menu.dart';
 import 'package:movie_app/screens/log_in/log_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'categories.dart';
 import 'genres.dart';
 import 'movie_carousel.dart';
 
+String username;
+
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(),
-      backgroundColor: Colors.white,
-      body: Body(),
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      leading: IconButton(
-        padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-        icon: SvgPicture.asset("assets/icons/menu.svg"),
-        onPressed: () {},
-      ),
-      backgroundColor: Colors.white,
-      elevation: 0,
-      actions: <Widget>[
-        IconButton(
-          padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          icon: SvgPicture.asset("assets/icons/search.svg"),
-          onPressed: () {},
+    return MaterialApp(
+      home: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-      ],
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: buildAppBar(),
+          body: Body(),
+          drawer: NavDrawer(username),
+        ),
+      ),
     );
   }
+}
+
+AppBar buildAppBar() {
+  var appBar = AppBar(
+    leading: IconButton(
+      padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+      icon: Icon(Icons.menu),
+      color: kSecondaryColor,
+      onPressed: () {},
+    ),
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+  );
+  return appBar;
 }
 
 class Body extends StatefulWidget {
@@ -55,6 +64,7 @@ class _Body extends State<Body> {
 
   checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
+    username = sharedPreferences.getString("user");
     if (sharedPreferences.getString("user") == null) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
@@ -66,7 +76,7 @@ class _Body extends State<Body> {
   Widget build(BuildContext context) {
     // it enable scroll on small device
     Categorylist();
-
+    NavDrawer(username);
     return SingleChildScrollView(
       child: Column(children: <Widget>[
         Categorylist(),

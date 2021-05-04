@@ -23,7 +23,10 @@ class TitleDurationAndFabBtn extends StatelessWidget {
               children: <Widget>[
                 Text(
                   movie.original_title,
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      .copyWith(fontWeight: FontWeight.w600, color: kTextColor),
                 ),
                 SizedBox(height: kDefaultPadding / 2),
                 Row(

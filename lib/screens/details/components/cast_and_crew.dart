@@ -18,7 +18,10 @@ class CastAndCrew extends StatelessWidget {
         children: <Widget>[
           Text(
             "Cast & Crew",
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context)
+                .textTheme
+                .headline5
+                .copyWith(fontWeight: FontWeight.w600, color: kTextColor),
           ),
           SizedBox(height: kDefaultPadding),
           SizedBox(

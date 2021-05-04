@@ -16,7 +16,7 @@ class GenreCard extends StatelessWidget {
         vertical: kDefaultPadding / 4, // 5 padding top and bottom
       ),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black26),
+        border: Border.all(color: kSecondaryColor),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(

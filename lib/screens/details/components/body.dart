@@ -34,7 +34,10 @@ class Body extends StatelessWidget {
             ),
             child: Text(
               "Plot Summary",
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5
+                  .copyWith(fontWeight: FontWeight.w600, color: kTextColor),
             ),
           ),
           Padding(

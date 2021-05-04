@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/movie_card.dart';
 import 'package:movie_app/screens/recommendation/recom_movie_list.dart';
@@ -39,7 +40,7 @@ class RecTapState extends State<RecTap> {
     return Scaffold(
         appBar: AppBar(
           title: Center(child: Text('Search Movies')),
-          backgroundColor: Colors.red,
+          backgroundColor: kSecondaryColor,
         ),
         body: Column(
           children: <Widget>[

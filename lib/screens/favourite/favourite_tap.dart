@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/httpFiles/favourite_movies.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/body.dart';
@@ -11,10 +12,10 @@ class FavTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.red,
+        foregroundColor: kSecondaryColor,
         centerTitle: true,
         title: Text("Favoutrit Movies"),
-        backgroundColor: Colors.red,
+        backgroundColor: kSecondaryColor,
       ),
       body: Fav(),
     );

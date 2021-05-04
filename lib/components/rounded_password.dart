@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/components/rounded_input.dart';
 
+import '../constants.dart';
+
 class RoundedPassword extends StatelessWidget {
   final ValueChanged<String> onChanged;
   const RoundedPassword({
@@ -14,16 +16,16 @@ class RoundedPassword extends StatelessWidget {
       child: TextField(
         obscureText: true,
         onChanged: onChanged,
-        cursorColor: Colors.red,
+        cursorColor: kSecondaryColor,
         decoration: InputDecoration(
           hintText: "Password",
           icon: Icon(
             Icons.lock,
-            color: Colors.red,
+            color: kSecondaryColor,
           ),
           suffixIcon: Icon(
             Icons.visibility,
-            color: Colors.red,
+            color: kSecondaryColor,
           ),
           border: InputBorder.none,
         ),

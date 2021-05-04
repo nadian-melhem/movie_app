@@ -26,7 +26,10 @@ class CastCard extends StatelessWidget {
           Text(
             cast,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2
+                .copyWith(fontWeight: FontWeight.w600, color: kTextColor),
             maxLines: 2,
           ),
         ],

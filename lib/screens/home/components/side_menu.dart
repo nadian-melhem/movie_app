@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NavDrawer extends StatelessWidget {
+  final String username;
+  NavDrawer(this.username);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -10,11 +15,11 @@ class NavDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             child: Text(
-              'Nadian Melhem',
-              style: TextStyle(color: Colors.white, fontSize: 25),
+              username,
+              style: TextStyle(color: kTextColor, fontSize: 25),
             ),
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: darkblue,
               /* image: DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage('assets/images/cover.jpg'))*/

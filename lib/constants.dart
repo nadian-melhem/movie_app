@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 // Colos that use in our app
-const kSecondaryColor = Color(0xFFFE6D8E);
-const kTextColor = Color(0xFF12153D);
-const kTextLightColor = Color(0xFF9A9BB2);
-const kFillStarColor = Color(0xFFFCC419);
-
+const kSecondaryColor = Color(0xFF66FcF1);
+const kTextColor = Color(0xFFC5C6C7);
+const kTextLightColor = Color(0xFFEDC7B7);
+const kFillStarColor = Color(0xFFEDC7B7);
+const darkblue = Color(0xFF45A29E);
+const buttoncolor = Color(0xFF99D5D8);
+const darkTextcolor = Color(0xFF0A3269);
 const kDefaultPadding = 20.0;
 
 const kDefaultShadow = BoxShadow(
