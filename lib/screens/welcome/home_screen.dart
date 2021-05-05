@@ -46,9 +46,19 @@ class HomeScreen extends StatelessWidget {
               );
             },
           ),
-          Text("Sign In as guest",
-              style: Theme.of(context).textTheme.headline6.copyWith(
-                  color: kTextColor, decoration: TextDecoration.underline))
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            Text("Are You a Guest ?   ",
+                style: Theme.of(context)
+                    .textTheme
+                    .caption
+                    .copyWith(fontWeight: FontWeight.w600, color: kTextColor)),
+            GestureDetector(
+              //onTap: ,
+              child: Text("Predict",
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      fontWeight: FontWeight.bold, color: kTextColor)),
+            ),
+          ]),
         ]),
       )
     ]);

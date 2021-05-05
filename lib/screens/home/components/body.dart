@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/httpFiles/futureTop.dart';
+import 'package:movie_app/main.dart';
 import 'package:movie_app/screens/home/components/side_menu.dart';
 import 'package:movie_app/screens/welcome/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -64,7 +65,7 @@ class _Body extends State<Body> {
     username = sharedPreferences.getString("user");
     if (sharedPreferences.getString("user") == null) {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
+          MaterialPageRoute(builder: (BuildContext context) => MyApp()),
           (Route<dynamic> route) => false);
     }
   }

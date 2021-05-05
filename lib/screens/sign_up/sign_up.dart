@@ -18,15 +18,16 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/welcome.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: SignUpBody(),
-    ));
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/welcome.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: SignUpBody(),
+        ));
   }
 }
 
@@ -86,24 +87,6 @@ class Body extends State<SignUpBody> {
                     );
                   },
                 ),
-                /* OrDivider(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SocalIcon(
-                      iconSrc: "assets/icons/facebook.svg",
-                      press: () {},
-                    ),
-                    SocalIcon(
-                      iconSrc: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
-                    SocalIcon(
-                      iconSrc: "assets/icons/google-plus.svg",
-                      press: () {},
-                    ),
-                  ],
-                )*/
               ],
             ),
           ))
@@ -142,7 +125,7 @@ class Body extends State<SignUpBody> {
           setState(() {
             _isLoading = false;
           });
-          sharedPreferences.setString("user", jsonResponse['message']);
+          sharedPreferences.setString("user", jsonResponse['username']);
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (BuildContext context) => MainPage()),
               (Route<dynamic> route) => false);

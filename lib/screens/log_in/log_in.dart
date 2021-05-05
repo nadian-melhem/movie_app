@@ -16,6 +16,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //resizeToAvoidBottomInset: false,
         body: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -45,13 +46,14 @@ class _LogInBodyState extends State<LogInBody> {
           bottom: 30,
           right: 0,
           left: 0,
+          height: 350,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: size.height * 0.03),
                 RoundedInput(
-                  hintText: "Your Email",
+                  hintText: "Your User Name",
                   onChanged: (value) {
                     userEmail = value;
                   },
@@ -63,7 +65,6 @@ class _LogInBodyState extends State<LogInBody> {
                 ),
                 RoundedButton(
                   text: "Sign In",
-                  // here will be the auth
                   press: () {
                     logIn(userEmail, passwored);
                   },

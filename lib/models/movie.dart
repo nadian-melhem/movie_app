@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class Movie {
   final String original_title;
-  final int vote_average;
+  var vote_average;
   final double runtime;
   final String overview;
   List<String> cast;

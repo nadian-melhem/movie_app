@@ -20,9 +20,9 @@ class TopFuture extends StatelessWidget {
       child: FutureBuilder<List<Movie>>(
           future: futureMovie,
           builder: (context, AsyncSnapshot snapshot) {
-            print("tamer");
+            // print("tamer");
             if (snapshot.hasData) {
-              print("hiiiii");
+              //  print("hiiiii");
               sdata = snapshot.data;
               return new MovieCarousel(movies: snapshot.data);
             } else if (snapshot.hasError) {

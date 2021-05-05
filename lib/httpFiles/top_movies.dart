@@ -11,7 +11,7 @@ class TopMoviesRequest {
 
   Future<List<Movie>> fetchMovie() async {
     final response = await http.get(Uri.http('192.168.1.14:5000', 'TOPmovie'));
-    print(response.body);
+
     return compute(parseMovies, response.body);
   }
 }

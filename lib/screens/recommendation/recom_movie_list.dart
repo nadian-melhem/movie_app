@@ -11,7 +11,11 @@ class MovieList extends StatelessWidget {
   @override
   Widget build(context) {
     return new Container(
-        decoration: BoxDecoration(color: Colors.grey),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage("assets/images/background.jpg"),
+          fit: BoxFit.cover,
+        )),
         child: ListView.builder(
             padding: const EdgeInsets.all(8.0),
             itemCount: this.movies.length,
