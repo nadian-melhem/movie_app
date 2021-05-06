@@ -2,14 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/main.dart';
-import 'package:movie_app/screens/log_in/log_in.dart';
 import 'package:movie_app/screens/profile/home.dart';
-import 'package:movie_app/screens/welcome/home_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class NavDrawer extends StatelessWidget {
-  final String username, email, passwored;
-  NavDrawer(this.username, this.email, this.passwored);
+  final String username, email;
+  NavDrawer(this.username, this.email);
 
   @override
   Widget build(BuildContext context) {

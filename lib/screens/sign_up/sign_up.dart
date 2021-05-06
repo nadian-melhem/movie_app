@@ -123,7 +123,8 @@ class Body extends State<SignUpBody> {
           setState(() {
             _isLoading = false;
           });
-          sharedPreferences.setString("user", jsonResponse['username']);
+          sharedPreferences.setString("user", jsonResponse['message']);
+          sharedPreferences.setString("email", jsonResponse['email']);
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (BuildContext context) => MainPage()),
               (Route<dynamic> route) => false);

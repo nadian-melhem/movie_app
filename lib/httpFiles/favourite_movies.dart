@@ -8,8 +8,14 @@ import 'package:movie_app/models/movie.dart';
 
 class FavMoviesRequest {
   FavMoviesRequest();
-  Future<List<Movie>> favMovie() async {
-    final response = await http.get(Uri.http('192.168.1.215:5000', 'FAVmovie'));
+  Future<List<Movie>> favMovie(user) async {
+    final data = jsonEncode({'user': user});
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'authorization': 'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='
+    };
+    final url = Uri.parse('http://192.168.1.14:5000/favorite');
+    final response = await http.post(url, headers: headers, body: data);
     return compute(parseMovies, response.body);
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 class RoundedInput extends StatelessWidget {
   final String hintText;
@@ -18,17 +18,18 @@ class RoundedInput extends StatelessWidget {
     return TextFieldContainer(
       child: TextField(
         onChanged: onChanged,
-        style: TextStyle(color: kTextColor),
         cursorColor: kTextColor,
         decoration: InputDecoration(
-          icon: Icon(
-            icon,
+          hintStyle: TextStyle(
+              fontSize: 23, color: Colors.black, fontWeight: FontWeight.bold),
+          suffixIcon: Icon(
+            Icons.edit,
             color: darkblue,
           ),
           hintText: hintText,
-          hintStyle: TextStyle(color: kTextColor),
           border: InputBorder.none,
         ),
+        style: TextStyle(color: kTextColor),
       ),
     );
   }
@@ -45,13 +46,14 @@ class TextFieldContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      margin: EdgeInsets.symmetric(vertical: 5),
+      padding: EdgeInsets.symmetric(vertical: 0.05),
       width: size.width * 0.8,
+      height: 40,
       decoration: BoxDecoration(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(29),
-        border: Border.all(color: buttoncolor),
+        borderRadius: BorderRadius.circular(15),
+        //  border: Border.all(color: buttoncolor)
       ),
       child: child,
     );

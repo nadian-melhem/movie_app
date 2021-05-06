@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           appBar: buildAppBar(),
           body: Body(),
-          drawer: NavDrawer(username, email, passwored),
+          // drawer: NavDrawer(username, email),
         ),
       ),
     );
@@ -74,7 +74,7 @@ class _Body extends State<Body> {
   Widget build(BuildContext context) {
     // it enable scroll on small device
     Categorylist();
-    NavDrawer(username, email, passwored);
+    NavDrawer(username, email);
     return SingleChildScrollView(
       child: Column(children: <Widget>[
         Categorylist(),

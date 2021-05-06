@@ -5,6 +5,7 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/httpFiles/favourite_movies.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/movie_card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FavTap extends StatelessWidget {
   @override
@@ -28,8 +29,10 @@ class Fav extends StatefulWidget {
 
 class _Fav extends State<Fav> {
   FavMoviesRequest request = new FavMoviesRequest();
+  String username;
   void initState() {
     super.initState();
+    getuserName();
   }
 
   void itemClick(Movie item) {
@@ -41,10 +44,16 @@ class _Fav extends State<Fav> {
     );
   }
 
+  getuserName() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    username = sharedPreferences.getString('user');
+    print(username + "hi");
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Movie>>(
-        future: request.favMovie(),
+        future: request.favMovie(username),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Expanded(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/constants.dart';
 import 'package:movie_app/registration_components/rounded_input.dart';
-import 'package:movie_app/registration_components/rounded_password.dart';
 import 'package:movie_app/screens/favourite/favourite_tap.dart';
 
 class Name extends StatelessWidget {

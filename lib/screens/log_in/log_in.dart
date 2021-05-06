@@ -116,6 +116,7 @@ class _LogInBodyState extends State<LogInBody> {
             _isLoading = false;
           });
           sharedPreferences.setString("user", jsonResponse['message']);
+          sharedPreferences.setString("email", jsonResponse['email']);
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
                   builder: (BuildContext context) => main.MainPage()),

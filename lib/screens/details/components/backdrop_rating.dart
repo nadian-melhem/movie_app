@@ -1,37 +1,39 @@
+import 'dart:convert';
+
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/models/movie.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 import '../../../constants.dart';
+import '../../custome_dialog.dart';
 
-class BackdropAndRating extends StatelessWidget {
-  const BackdropAndRating({
-    Key key,
-    @required this.size,
-    @required this.movie,
-    // @required this.topMovies,
-  }) : super(key: key);
-
+class BackdropAndRating extends StatefulWidget {
   final Size size;
   final Movie movie;
-  //final TopMoviesList topMovies;
 
+  const BackdropAndRating({Key key, this.size, this.movie}) : super(key: key);
+  _BackdropAndRating createState() => _BackdropAndRating();
+}
+
+class _BackdropAndRating extends State<BackdropAndRating> {
+  String username;
   @override
   Widget build(BuildContext context) {
     return Container(
       // 40% of our total height
-      height: size.height * 0.4,
+      height: widget.size.height * 0.4,
       child: Stack(
         children: <Widget>[
           Container(
-            height: size.height * 0.4 - 50,
+            height: widget.size.height * 0.4 - 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
-                    "https://image.tmdb.org/t/p/original" + movie.poster_path),
+                image: NetworkImage("https://image.tmdb.org/t/p/original" +
+                    widget.movie.poster_path),
               ),
             ),
           ),
@@ -41,7 +43,7 @@ class BackdropAndRating extends StatelessWidget {
             right: 0,
             child: Container(
               // it will cover 90% of our total width
-              width: size.width * 0.9,
+              width: widget.size.width * 0.9,
               height: 100,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -73,7 +75,7 @@ class BackdropAndRating extends StatelessWidget {
                             style: TextStyle(color: Colors.black),
                             children: [
                               TextSpan(
-                                text: "${movie.vote_average}/",
+                                text: "${widget.movie.vote_average}/",
                                 style: TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w600),
                               ),
@@ -95,6 +97,11 @@ class BackdropAndRating extends StatelessWidget {
                         FavoriteButton(
                           valueChanged: (_isFavorite) {
                             // here I have to add it to fav page and database
+                            if (_isFavorite) {
+                              addFav(widget.movie.original_title);
+                            } else {
+                              deleteFav(widget.movie.original_title);
+                            }
                           },
                         ),
                       ],
@@ -109,5 +116,35 @@ class BackdropAndRating extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void initState() {
+    super.initState();
+    getUserName();
+  }
+
+  getUserName() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    username = sharedPreferences.getString("user");
+  }
+
+  addFav(String title) async {
+    final data = jsonEncode({'moviename': title, 'username': username});
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'authorization': 'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='
+    };
+    final url = Uri.parse('http://192.168.1.14:5000/addtofavorite');
+    var response = await http.post(url, headers: headers, body: data);
+  }
+
+  deleteFav(String title) async {
+    final data = jsonEncode({'moviename': title, 'username': username});
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'authorization': 'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='
+    };
+    final url = Uri.parse('http://192.168.1.14:5000/deletefromfavorite');
+    var response = await http.post(url, headers: headers, body: data);
   }
 }
