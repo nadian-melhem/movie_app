@@ -15,7 +15,7 @@ class FavTap extends StatelessWidget {
         foregroundColor: kSecondaryColor,
         centerTitle: true,
         title: Text("Favoutrit Movies"),
-        backgroundColor: kSecondaryColor,
+        backgroundColor: kTextColor,
       ),
       body: Fav(),
     );
