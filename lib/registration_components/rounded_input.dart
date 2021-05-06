@@ -20,9 +20,10 @@ class RoundedInput extends StatelessWidget {
         onChanged: onChanged,
         cursorColor: kTextColor,
         decoration: InputDecoration(
-          hintStyle: TextStyle(color: kTextColor),
-          icon: Icon(
-            icon,
+          hintStyle: TextStyle(
+              fontSize: 23, color: Colors.black, fontWeight: FontWeight.bold),
+          suffixIcon: Icon(
+            Icons.edit,
             color: darkblue,
           ),
           hintText: hintText,
@@ -45,13 +46,15 @@ class TextFieldContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      margin: EdgeInsets.symmetric(vertical: 5),
+      padding: EdgeInsets.symmetric(vertical: 0.05),
       width: size.width * 0.8,
+      height: 40,
       decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: buttoncolor)),
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(15),
+        //  border: Border.all(color: buttoncolor)
+      ),
       child: child,
     );
   }

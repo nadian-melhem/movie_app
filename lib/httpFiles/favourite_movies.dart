@@ -12,14 +12,15 @@ class FavMoviesRequest {
     final response = await http.get(Uri.http('192.168.1.215:5000', 'FAVmovie'));
     return compute(parseMovies, response.body);
   }
+}
 
-  List<Movie> parseMovies(String responseBody) {
-    final parsed = jsonDecode(responseBody);
+List<Movie> parseMovies(String responseBody) {
+  final parsed = jsonDecode(responseBody);
 
-    return parsed.map<Movie>((json) => Movie.fromJson(json)).toList();
-  }
+  return parsed.map<Movie>((json) => Movie.fromJson(json)).toList();
+}
 
-  /*void sendRequest() {
+/*void sendRequest() {
     FutureBuilder<List<Movie>>(
       future: fetchMovie(),
       builder: (context, snapshot) {
@@ -31,4 +32,3 @@ class FavMoviesRequest {
       },
     );
   }*/
-}

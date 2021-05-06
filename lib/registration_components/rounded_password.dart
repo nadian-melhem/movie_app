@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/components/rounded_input.dart';
+import 'package:movie_app/registration_components/rounded_input.dart';
 
 import '../constants.dart';
 

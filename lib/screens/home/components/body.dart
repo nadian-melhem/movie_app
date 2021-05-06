@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'categories.dart';
 import 'genres.dart';
 
-String username;
+String username, email, passwored;
 
 class MainPage extends StatelessWidget {
   @override
@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           appBar: buildAppBar(),
           body: Body(),
-          drawer: NavDrawer(username),
+          drawer: NavDrawer(username, email, passwored),
         ),
       ),
     );
@@ -74,7 +74,7 @@ class _Body extends State<Body> {
   Widget build(BuildContext context) {
     // it enable scroll on small device
     Categorylist();
-    NavDrawer(username);
+    NavDrawer(username, email, passwored);
     return SingleChildScrollView(
       child: Column(children: <Widget>[
         Categorylist(),

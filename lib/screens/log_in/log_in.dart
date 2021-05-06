@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:movie_app/components/already_have.dart';
-import 'package:movie_app/components/rounded_button.dart';
-import 'package:movie_app/components/rounded_input.dart';
-import 'package:movie_app/components/rounded_password.dart';
+import 'package:movie_app/registration_components/already_have.dart';
+import 'package:movie_app/registration_components/rounded_button.dart';
+import 'package:movie_app/registration_components/rounded_input.dart';
+import 'package:movie_app/registration_components/rounded_password.dart';
 import 'package:movie_app/screens/sign_up/sign_up.dart';
 import 'package:movie_app/screens/home/components/body.dart' as main;
 import 'package:shared_preferences/shared_preferences.dart';

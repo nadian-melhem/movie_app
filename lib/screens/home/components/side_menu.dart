@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/main.dart';
 import 'package:movie_app/screens/log_in/log_in.dart';
+import 'package:movie_app/screens/profile/home.dart';
 import 'package:movie_app/screens/welcome/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NavDrawer extends StatelessWidget {
-  final String username;
-  NavDrawer(this.username);
+  final String username, email, passwored;
+  NavDrawer(this.username, this.email, this.passwored);
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +34,7 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {Navigator.of(context).pop(Profile(username, email))},
           ),
           ListTile(
             leading: Icon(Icons.border_color),

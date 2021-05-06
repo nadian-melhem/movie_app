@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/components/genre_card.dart';
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/registration_components/genre_card.dart';
 
 import '../../../constants.dart';
 

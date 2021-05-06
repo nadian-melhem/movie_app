@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:movie_app/components/rounded_button.dart';
 import 'package:movie_app/constants.dart';
-import 'package:movie_app/screens/home/components/body.dart';
-//import 'package:movie_app/screens/home/components/body.dart';
-import 'package:movie_app/screens/home/components/side_menu.dart';
+import 'package:movie_app/registration_components/rounded_button.dart';
 import 'package:movie_app/screens/log_in/log_in.dart';
 import 'package:movie_app/screens/sign_up/sign_up.dart';
 
