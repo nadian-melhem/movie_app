@@ -42,9 +42,8 @@ class MovieCard extends StatelessWidget {
                   boxShadow: [kDefaultShadow],
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: NetworkImage("https://image.tmdb.org/t/p/original" +
-                        movie
-                            .poster_path), // here will be the image from database
+                    image: NetworkImage(movie
+                        .poster_path), // here will be the image from database
                   ),
                 ),
               ),

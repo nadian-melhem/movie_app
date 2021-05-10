@@ -9,7 +9,8 @@ import 'package:movie_app/models/movie.dart';
 class FavMoviesRequest {
   FavMoviesRequest();
   Future<List<Movie>> favMovie(user) async {
-    final data = jsonEncode({'user': user});
+    final data = jsonEncode({'username': user});
+    print(user);
     Map<String, String> headers = {
       'Content-Type': 'application/json',
       'authorization': 'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='
@@ -25,16 +26,3 @@ List<Movie> parseMovies(String responseBody) {
 
   return parsed.map<Movie>((json) => Movie.fromJson(json)).toList();
 }
-
-/*void sendRequest() {
-    FutureBuilder<List<Movie>>(
-      future: fetchMovie(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) print(snapshot.error);
-
-        return snapshot.hasData
-            ? snapshot.data
-            : Center(child: CircularProgressIndicator());
-      },
-    );
-  }*/

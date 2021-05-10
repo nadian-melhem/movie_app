@@ -3,12 +3,11 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/httpFiles/futureTop.dart';
 import 'package:movie_app/main.dart';
 import 'package:movie_app/screens/home/components/side_menu.dart';
-import 'package:movie_app/screens/welcome/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'categories.dart';
 import 'genres.dart';
 
-String username, email, passwored;
+String user, email, passwored;
 
 class MainPage extends StatelessWidget {
   @override
@@ -26,7 +25,7 @@ class MainPage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           appBar: buildAppBar(),
           body: Body(),
-          // drawer: NavDrawer(username, email),
+          drawer: NavDrawer(user, email),
         ),
       ),
     );
@@ -62,7 +61,8 @@ class _Body extends State<Body> {
 
   checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    username = sharedPreferences.getString("user");
+    user = sharedPreferences.getString("user");
+    email = sharedPreferences.getString("email");
     if (sharedPreferences.getString("user") == null) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (BuildContext context) => MyApp()),
@@ -74,7 +74,7 @@ class _Body extends State<Body> {
   Widget build(BuildContext context) {
     // it enable scroll on small device
     Categorylist();
-    NavDrawer(username, email);
+    //  NavDrawer(username, email);
     return SingleChildScrollView(
       child: Column(children: <Widget>[
         Categorylist(),

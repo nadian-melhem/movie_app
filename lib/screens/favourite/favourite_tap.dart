@@ -1,4 +1,5 @@
 //import 'dart:html';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:movie_app/constants.dart';
@@ -7,32 +8,49 @@ import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/movie_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class FavTap extends StatelessWidget {
+  String user = " ";
+  FavTap(this.user);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        foregroundColor: kSecondaryColor,
-        centerTitle: true,
-        title: Text("Favoutrit Movies"),
-        backgroundColor: kTextColor,
+    print("user" + user);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title:
+                Text("Favourite Movies", style: TextStyle(color: kTextColor)),
+            backgroundColor: Colors.transparent,
+          ),
+          body: Fav(user),
+        ),
       ),
-      body: Fav(),
     );
   }
 }
 
+// ignore: must_be_immutable
 class Fav extends StatefulWidget {
+  String username = " ";
+  Fav(this.username);
   @override
   _Fav createState() => _Fav();
 }
 
 class _Fav extends State<Fav> {
   FavMoviesRequest request = new FavMoviesRequest();
-  String username;
   void initState() {
     super.initState();
-    getuserName();
   }
 
   void itemClick(Movie item) {
@@ -44,19 +62,14 @@ class _Fav extends State<Fav> {
     );
   }
 
-  getuserName() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    username = sharedPreferences.getString('user');
-    print(username + "hi");
-  }
-
   @override
   Widget build(BuildContext context) {
+    print("widget" + widget.username);
     return FutureBuilder<List<Movie>>(
-        future: request.favMovie(username),
+        future: request.favMovie(widget.username),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Expanded(
+            return Container(
                 child:
                     FavCard(movies: snapshot.data, itemClick: this.itemClick));
           } else if (snapshot.hasError) {
@@ -73,14 +86,24 @@ class FavCard extends StatelessWidget {
   const FavCard({Key key, this.movies, this.itemClick}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return new StaggeredGridView.countBuilder(
+    return Container(
+        child: StaggeredGridView.countBuilder(
       crossAxisCount: 2,
       itemCount: movies.length,
-      itemBuilder: (context, index) => Image.network(
-          "https://image.tmdb.org/t/p/original" + movies[index].poster_path),
+      itemBuilder: (context, index) => FadeInImage(
+        image: NetworkImage(
+            "https://image.tmdb.org/t/p/original" + movies[index].poster_path),
+        //placeholder: AssetImage("assets/images/error.jpg"),
+        imageErrorBuilder: (context, error, stackTrace) {
+          return Image.asset('assets/images/poster.jpg', fit: BoxFit.fitWidth);
+        },
+        fit: BoxFit.fitWidth, placeholder: null,
+      ),
+      //          Image.network(
+      // "https://image.tmdb.org/t/p/original" + movies[index].poster_path),
       staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-      mainAxisSpacing: 8.0,
+      mainAxisSpacing: 10.0,
       crossAxisSpacing: 8.0,
-    );
+    ));
   }
 }

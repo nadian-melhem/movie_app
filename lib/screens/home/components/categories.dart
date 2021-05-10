@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/httpFiles/futureTop.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/screens/favourite/favourite_tap.dart';
 import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 import '../../../constants.dart';
-import '../../../main.dart';
 import 'body.dart';
-import 'movie_carousel.dart';
 
-List<Object> taps = [MainPage(), RecTap(), FavTap()];
+List<Object> taps = [MainPage(), RecTap()];
 
 // We need stateful widget because we need to change some sate on our category
 class Categorylist extends StatefulWidget {

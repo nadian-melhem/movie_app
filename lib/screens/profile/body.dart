@@ -1,13 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:movie_app/registration_components/rounded_input.dart';
 import 'package:movie_app/screens/favourite/favourite_tap.dart';
+import 'package:movie_app/screens/profile/profile_input.dart';
+import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class Name extends StatefulWidget {
-  String username, email;
-  Name(username, email);
+  String username = " ", email = " ";
+  Name(this.username, this.email);
   _Name createState() => _Name();
 }
 
@@ -20,9 +22,14 @@ class _Name extends State<Name> {
 
   var newPasswored;
   _Name();
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    print("inside widget");
     return Container(
         child: Column(
       children: [
@@ -39,7 +46,12 @@ class _Name extends State<Name> {
                     color: Colors.white,
                     iconSize: 40,
                     onPressed: () {
-                      FavTap();
+                      print(widget.username + "in body");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FavTap(widget.username)),
+                      );
                     },
                   ),
                   SizedBox(
@@ -54,27 +66,12 @@ class _Name extends State<Name> {
                 ]),
               )
             ]))),
-        // Expanded(
-        //     flex: 1,
-        //     child: SizedBox(
-        //         child: Stack(children: [
-        //       Positioned(
-        //         top: 200,
-        //         right: 160,
-        //         child: IconButton(
-        //           icon: Icon(Icons.favorite),
-        //           color: Colors.white,
-        //           iconSize: 40,
-        //           onPressed: () {},
-        //         ),
-        //       )
-        //     ]))),
         Expanded(
             flex: 2,
             child: SizedBox(
                 child: Stack(children: [
               Positioned(
-                //top: 30,
+                top: 30,
                 right: 280,
                 child: Text(widget.username,
                     textAlign: TextAlign.left,
