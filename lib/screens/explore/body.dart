@@ -1,21 +1,17 @@
-//import 'dart:html';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:movie_app/constants.dart';
-import 'package:movie_app/httpFiles/favourite_movies.dart';
+import 'package:movie_app/httpFiles/explore.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/movie_card.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
-class FavTap extends StatelessWidget {
+class ExploreTap extends StatelessWidget {
   String user = " ";
-  FavTap(this.user);
+  ExploreTap(this.user);
 
   @override
   Widget build(BuildContext context) {
-    print("user" + user);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Container(
@@ -28,11 +24,10 @@ class FavTap extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title:
-                Text("Favourite Movies", style: TextStyle(color: kTextColor)),
+            title: Text("Explore Movies", style: TextStyle(color: kTextColor)),
             backgroundColor: Colors.transparent,
           ),
-          body: Fav(user),
+          body: ExploreBody(user),
         ),
       ),
     );
@@ -40,15 +35,15 @@ class FavTap extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class Fav extends StatefulWidget {
+class ExploreBody extends StatefulWidget {
   String username = " ";
-  Fav(this.username);
+  ExploreBody(this.username);
   @override
-  _Fav createState() => _Fav();
+  _ExploreBody createState() => _ExploreBody();
 }
 
-class _Fav extends State<Fav> {
-  FavMoviesRequest request = new FavMoviesRequest();
+class _ExploreBody extends State<ExploreBody> {
+  ExploreMoviesRequest request = new ExploreMoviesRequest();
   void initState() {
     super.initState();
   }
@@ -66,12 +61,12 @@ class _Fav extends State<Fav> {
   Widget build(BuildContext context) {
     print("widget" + widget.username);
     return FutureBuilder<List<Movie>>(
-        future: request.favMovie(widget.username),
+        future: request.exploreMovie(widget.username),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Container(
-                child:
-                    FavCard(movies: snapshot.data, itemClick: this.itemClick));
+                child: InstagramSearchGrid(
+                    movies: snapshot.data, itemClick: this.itemClick));
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
@@ -80,23 +75,26 @@ class _Fav extends State<Fav> {
   }
 }
 
-class FavCard extends StatelessWidget {
+class InstagramSearchGrid extends StatelessWidget {
   final List<Movie> movies;
   final Function itemClick;
-  const FavCard({Key key, this.movies, this.itemClick}) : super(key: key);
+  const InstagramSearchGrid({Key key, this.movies, this.itemClick})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: StaggeredGridView.countBuilder(
-      crossAxisCount: 2,
+    return StaggeredGridView.countBuilder(
+      crossAxisCount: 3,
       itemCount: movies.length,
       itemBuilder: (context, index) => GestureDetector(
-          child: Image.network("https://image.tmdb.org/t/p/original" +
-              movies[index].poster_path),
+          child: Image.network(
+            "https://image.tmdb.org/t/p/original" + movies[index].poster_path,
+            fit: BoxFit.cover,
+          ),
           onTap: () => this.itemClick(this.movies[index])),
-      staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-      mainAxisSpacing: 10.0,
-      crossAxisSpacing: 8.0,
-    ));
+      staggeredTileBuilder: (index) => StaggeredTile.count(
+          (index % 7 == 0) ? 2 : 1, (index % 7 == 0) ? 2 : 1),
+      mainAxisSpacing: 12,
+      crossAxisSpacing: 12,
+    );
   }
 }

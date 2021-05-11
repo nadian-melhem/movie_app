@@ -116,17 +116,21 @@ class Body extends State<SignUpBody> {
                   title: "SignUp Failed",
                   descriptions: message,
                   text: "Try again",
-                  img: SvgPicture.asset("assets/icons/person.svg"));
+                  img: SvgPicture.asset("assets/icons/tick-mark.svg"));
             });
       } else {
         if (jsonResponse != null) {
           setState(() {
             _isLoading = false;
           });
-          sharedPreferences.setString("user", jsonResponse['message']);
+          sharedPreferences.setString("user", jsonResponse['username']);
           sharedPreferences.setString("email", jsonResponse['email']);
+          String usertoSend = sharedPreferences.getString('user');
+          String emailtoSend = sharedPreferences.getString('email');
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (BuildContext context) => MainPage()),
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      MainPage(usertoSend, emailtoSend)),
               (Route<dynamic> route) => false);
           print(response.body);
         }
@@ -137,7 +141,7 @@ class Body extends State<SignUpBody> {
                   title: "Success",
                   descriptions: message,
                   text: "Ok",
-                  img: SvgPicture.asset("assets/icons/check-mark.svg"));
+                  img: SvgPicture.asset("assets/icons/done.svg"));
             });
       }
     } else {

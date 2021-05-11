@@ -7,26 +7,11 @@ import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
-class Name extends StatefulWidget {
-  String username = " ", email = " ";
-  Name(this.username, this.email);
-  _Name createState() => _Name();
+class Predict extends StatefulWidget {
+  _Predict createState() => _Predict();
 }
 
-class _Name extends State<Name> {
-  String passwored = "********";
-
-  String newUsername;
-
-  String newEmail;
-
-  String newPasswored;
-  SharedPreferences sharedPreferences;
-  _Name();
-  void initState() {
-    super.initState();
-  }
-
+class _Predict extends State<Predict> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,46 +20,13 @@ class _Name extends State<Name> {
         child: Column(
       children: [
         Expanded(
-            flex: 4,
-            child: SizedBox(
-                child: Stack(children: [
-              Positioned(
-                top: 200,
-                right: 40,
-                child: Row(children: [
-                  IconButton(
-                    icon: Icon(Icons.favorite),
-                    color: Colors.white,
-                    iconSize: 40,
-                    onPressed: () {
-                      print(widget.username + "in body");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FavTap(widget.username)),
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    width: 70,
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.people),
-                    color: Colors.white,
-                    iconSize: 40,
-                    onPressed: () {},
-                  ),
-                ]),
-              )
-            ]))),
-        Expanded(
             flex: 2,
             child: SizedBox(
                 child: Stack(children: [
               Positioned(
                 top: 30,
                 right: 280,
-                child: Text(widget.username,
+                child: Text("Insert Budget",
                     textAlign: TextAlign.left,
                     style: Theme.of(context).textTheme.headline5.copyWith(
                         color: Colors.black, fontWeight: FontWeight.bold)),

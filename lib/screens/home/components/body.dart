@@ -7,9 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'categories.dart';
 import 'genres.dart';
 
-String user, email, passwored;
-
+// ignore: must_be_immutable
 class MainPage extends StatelessWidget {
+  String user, email;
+  MainPage(this.user, this.email);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,8 +62,8 @@ class _Body extends State<Body> {
 
   checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    user = sharedPreferences.getString("user");
-    email = sharedPreferences.getString("email");
+    String user = sharedPreferences.getString("user");
+    String email = sharedPreferences.getString("email");
     if (sharedPreferences.getString("user") == null) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (BuildContext context) => MyApp()),

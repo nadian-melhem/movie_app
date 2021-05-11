@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: false,
         body: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -117,9 +117,12 @@ class _LogInBodyState extends State<LogInBody> {
           });
           sharedPreferences.setString("user", jsonResponse['username']);
           sharedPreferences.setString("email", jsonResponse['email']);
+          String usertoSend = sharedPreferences.getString('user');
+          String emailtoSend = sharedPreferences.getString('email');
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                  builder: (BuildContext context) => main.MainPage()),
+                  builder: (BuildContext context) =>
+                      main.MainPage(usertoSend, emailtoSend)),
               (Route<dynamic> route) => false);
           print(response.body);
         }

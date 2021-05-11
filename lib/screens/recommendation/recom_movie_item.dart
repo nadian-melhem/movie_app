@@ -14,14 +14,13 @@ class MovieItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5)),
-          color: randomColor
-              .randomColor(colorHue: ColorHue.random)
-              .withOpacity(1.0)
-          /* image: DecorationImage(
+          // color: randomColor
+          //     .randomColor(colorHue: ColorHue.random)
+          //     .withOpacity(1.0)
+          image: DecorationImage(
             image: AssetImage("assets/images/background.jpg"),
             fit: BoxFit.cover,
-          )*/
-          ),
+          )),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -42,8 +41,13 @@ class MovieItem extends StatelessWidget {
                     this.movie.original_title,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
+                    style: Theme.of(context).textTheme.headline5.copyWith(
+                        fontWeight: FontWeight.w600, color: kTextColor),
                   ),
-                  Text(this.movie.year.toString()),
+                  Text(
+                    this.movie.year.toString(),
+                    style: TextStyle(color: kTextColor),
+                  ),
                 ]),
           )
         ],

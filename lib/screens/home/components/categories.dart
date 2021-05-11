@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/screens/explore/body.dart';
 import 'package:movie_app/screens/recommendation/recomm_tap.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants.dart';
 import 'body.dart';
 
-List<Object> taps = [MainPage(), RecTap()];
+String user = " ", email = " ";
+List<Object> taps = [MainPage(user, email), RecTap(), ExploreTap(user)];
 
 // We need stateful widget because we need to change some sate on our category
 class Categorylist extends StatefulWidget {
@@ -18,11 +21,18 @@ class _CategorylistState extends State<Categorylist> {
   @override
   void initState() {
     super.initState();
+    getUser();
+  }
+
+  getUser() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    user = sharedPreferences.getString("user");
+    email = sharedPreferences.getString("email");
   }
 
   int selectedCategory = 0;
   final TopMoviesRequest request = new TopMoviesRequest();
-  List<String> categories = ["Top Movies", "Recommended", "Favourit"];
+  List<String> categories = ["Top Movies", "Recommended", "Explore"];
   @override
   Widget build(BuildContext context) {
     return Container(

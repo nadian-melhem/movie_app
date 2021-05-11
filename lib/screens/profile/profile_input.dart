@@ -5,13 +5,16 @@ import '../../constants.dart';
 class RoundedInput extends StatelessWidget {
   final String hintText;
   final IconData icon;
-  final ValueChanged<String> onChanged;
-  const RoundedInput({
-    Key key,
-    this.hintText,
-    this.icon = Icons.person,
-    this.onChanged,
-  }) : super(key: key);
+  final dynamic onChanged;
+  final Future<dynamic> onpressed;
+
+  const RoundedInput(
+      {Key key,
+      this.hintText,
+      this.icon = Icons.person,
+      this.onChanged,
+      this.onpressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +25,10 @@ class RoundedInput extends StatelessWidget {
         decoration: InputDecoration(
           hintStyle: TextStyle(
               fontSize: 23, color: Colors.black, fontWeight: FontWeight.bold),
-          suffixIcon: Icon(
-            Icons.edit,
+          suffixIcon: IconButton(
+            icon: Icon(Icons.edit),
             color: darkblue,
+            // onPressed: onpressed,
           ),
           hintText: hintText,
           border: InputBorder.none,
