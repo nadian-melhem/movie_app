@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/screens/profile/body.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'body.dart';
+
 class Profile extends StatefulWidget {
-  final username, email;
-  Profile(this.username, this.email);
   _Profile createState() => _Profile();
 }
 
@@ -21,7 +21,7 @@ class _Profile extends State<Profile> {
               fit: BoxFit.cover,
             ),
           ),
-          child: Name(widget.username, widget.email),
+          child: Predict(),
         ));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/home/components/body.dart';
+import 'package:movie_app/screens/prediction/home.dart';
 import 'package:movie_app/screens/welcome/home_screen.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: HomeScreen(),
+          child: Profile(),
         ));
   }
 }
