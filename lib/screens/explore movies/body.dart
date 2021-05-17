@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:movie_app/constants.dart';
-import 'package:movie_app/httpFiles/explore.dart';
+import 'package:movie_app/httpFiles/exploreMovies.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/home/components/movie_card.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/screens/explore/body.dart';
+import 'package:movie_app/screens/explore%20movies/body.dart';
 import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants.dart';

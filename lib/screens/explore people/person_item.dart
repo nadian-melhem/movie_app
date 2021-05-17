@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie.dart' as models;
 import '../../constants.dart';
 
-class MovieItem extends StatelessWidget {
-  final models.Movie movie;
-  MovieItem({this.movie});
+class PersonItem extends StatelessWidget {
+  final String name;
+  PersonItem({this.name});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5)),
-          // color: randomColor
-          //     .randomColor(colorHue: ColorHue.random)
-          //     .withOpacity(1.0)
           image: DecorationImage(
             image: AssetImage("assets/images/background.jpg"),
             fit: BoxFit.cover,
@@ -21,29 +18,19 @@ class MovieItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Column(children: <Widget>[
-            if (this.movie.poster_path != "N/A")
-              Image.network(
-                  "https://image.tmdb.org/t/p/original" +
-                      this.movie.poster_path,
-                  height: 100,
-                  width: 100)
-          ]),
+          Column(
+              children: <Widget>[Image.asset("assets/images/background.jpg")]),
           Expanded(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    this.movie.original_title,
+                    this.name,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: Theme.of(context).textTheme.headline5.copyWith(
                         fontWeight: FontWeight.w600, color: kTextColor),
-                  ),
-                  Text(
-                    this.movie.year.toString(),
-                    style: TextStyle(color: kTextColor),
                   ),
                 ]),
           )
