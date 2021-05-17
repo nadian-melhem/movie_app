@@ -15,7 +15,10 @@ import 'package:http/http.dart' as http;
 
 String title, username;
 
+// ignore: must_be_immutable
 class PersonTap extends StatefulWidget {
+  bool flag;
+  PersonTap(this.flag);
   @override
   PersonTapState createState() => PersonTapState();
 }
@@ -68,7 +71,7 @@ class PersonTapState extends State<PersonTap> {
                   children: <Widget>[
                     Container(
                       child: FutureBuilder<List<String>>(
-                          future: request.fetchNames(),
+                          future: request.fetchNames(username, widget.flag),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
                               return Expanded(

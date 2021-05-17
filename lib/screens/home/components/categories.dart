@@ -2,13 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/screens/explore%20movies/body.dart';
+import 'package:movie_app/screens/explore%20people/person_tap.dart';
 import 'package:movie_app/screens/recommendation/recomm_tap.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants.dart';
 import 'body.dart';
 
 String user = " ", email = " ";
-List<Object> taps = [MainPage(user, email), RecTap(), ExploreTap(user)];
+bool flag = true;
+List<Object> taps = [
+  MainPage(user, email),
+  RecTap(),
+  ExploreTap(user),
+  PersonTap(flag)
+];
 
 // We need stateful widget because we need to change some sate on our category
 class Categorylist extends StatefulWidget {
