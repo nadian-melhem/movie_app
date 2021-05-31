@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/screens/prediction/prediction.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 // ignore: must_be_immutable
@@ -73,7 +72,7 @@ class _Predict extends State<Predict> {
                       ),
                       Text(((percentage * 100).toStringAsFixed(2)) + "%",
                           style: Theme.of(context).textTheme.headline6.copyWith(
-                              color: kTextColor, fontWeight: FontWeight.bold)),
+                              color: kTextColor, fontWeight: FontWeight.bold))
                     ],
                   ))
             ]))),

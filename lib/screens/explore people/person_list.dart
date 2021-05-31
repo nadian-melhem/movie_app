@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/models/person.dart';
 import 'package:movie_app/screens/explore%20people/person_item.dart';
 
 class PeopleList extends StatelessWidget {
-  final List<String> names;
+  final List<Person> names;
   final Function itemClick;
+  bool flag;
 
-  PeopleList({this.names, this.itemClick});
+  PeopleList({this.names, this.itemClick, this.flag});
 
   @override
   Widget build(context) {

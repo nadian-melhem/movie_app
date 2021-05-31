@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/models/movie.dart' as models;
+import 'package:movie_app/models/person.dart';
 import '../../constants.dart';
 
 class PersonItem extends StatelessWidget {
-  final String name;
+  final Person name;
   PersonItem({this.name});
 
   @override
@@ -18,15 +18,17 @@ class PersonItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Column(
-              children: <Widget>[Image.asset("assets/images/background.jpg")]),
+          Column(children: <Widget>[Image.asset("assets/images/avatar.jpg")]),
+          SizedBox(
+            width: 20,
+          ),
           Expanded(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    this.name,
+                    this.name.name,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: Theme.of(context).textTheme.headline5.copyWith(

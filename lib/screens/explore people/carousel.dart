@@ -6,16 +6,15 @@ import 'package:movie_app/httpFiles/top_movies.dart';
 import 'dart:math' as math;
 
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/screens/explore%20people/person_tap.dart';
-import '../../../constants.dart';
-import 'movie_card.dart';
+
+import '../../constants.dart';
+import 'movieCard.dart';
 
 // ignore: must_be_immutable
 class MovieCarousel extends StatefulWidget {
   List<Movie> movies = [];
-  final String username;
   @override
-  MovieCarousel(this.movies, this.username);
+  MovieCarousel({this.movies});
 
   _MovieCarouselState createState() => _MovieCarouselState();
 }
@@ -30,7 +29,9 @@ class _MovieCarouselState extends State<MovieCarousel> {
     super.initState();
 
     _pageController = PageController(
-      viewportFraction: 0.8,
+      // so that we can have small portion shown on left and right side
+      viewportFraction: 1,
+      // by default our movie poster
       initialPage: initialPage,
     );
   }
@@ -44,9 +45,9 @@ class _MovieCarouselState extends State<MovieCarousel> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: kDefaultPadding),
+      padding: EdgeInsets.symmetric(vertical: 0.8),
       child: AspectRatio(
-        aspectRatio: 0.85,
+        aspectRatio: 1.2,
         child: PageView.builder(
           onPageChanged: (value) {
             setState(() {
@@ -55,7 +56,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
           },
           controller: _pageController,
           physics: ClampingScrollPhysics(),
-          itemCount: 10,
+          itemCount: widget.movies.length, // we have 3 demo movies
           itemBuilder: (context, index) => buildMovieSlider(index),
         ),
       ),
@@ -68,7 +69,9 @@ class _MovieCarouselState extends State<MovieCarousel> {
           double value = 0;
           if (_pageController.position.haveDimensions) {
             value = index - _pageController.page;
-            value = (value * 0.038).clamp(-1, 1);
+            // We use 0.038 because 180*0.038 = 7 almost and we need to rotate our poster 7 degree
+            // we use clamp so that our value vary from -1 to 1
+            value = (value * 0.5).clamp(-1, 1);
           }
 
           return AnimatedOpacity(
@@ -76,7 +79,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
             opacity: initialPage == index ? 1 : 0.4,
             child: Transform.rotate(
               angle: math.pi * value,
-              child: MovieCard(widget.username, widget.movies[index]),
+              child: MovieCard(movie: widget.movies[index]),
               // child: recTap(),
             ),
           );

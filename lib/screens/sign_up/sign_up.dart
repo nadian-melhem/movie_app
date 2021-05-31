@@ -16,16 +16,16 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        //resizeToAvoidBottomInset: false,
         body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/welcome.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: SignUpBody(),
-        ));
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/welcome.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: SignUpBody(),
+    ));
   }
 }
 
@@ -43,13 +43,15 @@ class Body extends State<SignUpBody> {
     return Container(
         child: Stack(children: [
       Positioned(
-          bottom: 30,
+          top: 50,
           right: 0,
           left: 0,
+          height: 700,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                SizedBox(height: 200),
                 RoundedInput(
                   hintText: "Your Email",
                   onChanged: (value) {
@@ -85,6 +87,7 @@ class Body extends State<SignUpBody> {
                     );
                   },
                 ),
+                SizedBox(height: 300),
               ],
             ),
           ))

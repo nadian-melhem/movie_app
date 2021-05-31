@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:movie_app/httpFiles/exploreMovies.dart';
-import 'package:movie_app/httpFiles/top_movies.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/screens/home/components/movie_carousel.dart';
+import 'carousel.dart';
 
 // ignore: must_be_immutable
 class FavouritFuture extends StatelessWidget {
@@ -23,6 +22,7 @@ class FavouritFuture extends StatelessWidget {
           future: futureMovie,
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
+              print("inside personFavourite");
               sdata = snapshot.data;
               return new MovieCarousel(movies: snapshot.data);
             } else if (snapshot.hasError) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
+import 'package:movie_app/screens/explore%20people/person_tap.dart';
 import 'package:movie_app/screens/home/components/futureTop.dart';
 import 'package:movie_app/main.dart';
 import 'package:movie_app/screens/home/components/side_menu.dart';
@@ -25,7 +26,7 @@ class MainPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: buildAppBar(),
-          body: Body(),
+          body: Body(user),
           drawer: NavDrawer(user, email),
         ),
       ),
@@ -48,6 +49,8 @@ AppBar buildAppBar() {
 }
 
 class Body extends StatefulWidget {
+  String user = " ";
+  Body(this.user);
   @override
   _Body createState() => _Body();
 }
@@ -73,15 +76,13 @@ class _Body extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    // it enable scroll on small device
     Categorylist();
-    //  NavDrawer(username, email);
     return SingleChildScrollView(
       child: Column(children: <Widget>[
         Categorylist(),
         Genres(),
         SizedBox(height: kDefaultPadding),
-        TopFuture(),
+        TopFuture(widget.user),
       ]),
     );
   }

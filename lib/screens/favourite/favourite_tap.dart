@@ -28,8 +28,7 @@ class FavTap extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title:
-                Text("Favourite Movies", style: TextStyle(color: kTextColor)),
+            title: Text("Favorite Movies", style: TextStyle(color: kTextColor)),
             backgroundColor: Colors.transparent,
           ),
           body: Fav(user),
@@ -57,7 +56,7 @@ class _Fav extends State<Fav> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MovieCard(movie: item),
+        builder: (context) => MovieCard(widget.username, item),
       ),
     );
   }

@@ -42,16 +42,17 @@ class _LogInBodyState extends State<LogInBody> {
     Size size = MediaQuery.of(context).size;
     return Container(
         child: Stack(children: [
+      // SizedBox(height: 200),
       Positioned(
-          bottom: 30,
+          top: 50,
           right: 0,
           left: 0,
-          height: 350,
+          height: 600,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: size.height * 0.03),
+                SizedBox(height: 300),
                 RoundedInput(
                   hintText: "Your User Name",
                   onChanged: (value) {
@@ -77,7 +78,8 @@ class _LogInBodyState extends State<LogInBody> {
                       return SignUpScreen();
                     }));
                   },
-                )
+                ),
+                SizedBox(height: 200),
               ],
             ),
           ))

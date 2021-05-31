@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: Profile(),
+          child: HomeScreen(),
         ));
   }
 }

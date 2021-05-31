@@ -2,24 +2,29 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/models/movie.dart';
-
 import 'package:movie_app/screens/details/details_screen.dart';
 import '../../../constants.dart';
-import 'package:favorite_button/favorite_button.dart';
 
-class MovieCard extends StatelessWidget {
+// ignore: must_be_immutable
+class MovieCard extends StatefulWidget {
   final Movie movie;
+  final String username;
+  MovieCard(this.username, this.movie);
+  _MovieCard createState() => _MovieCard();
+}
 
-  const MovieCard({Key key, this.movie}) : super(key: key);
+class _MovieCard extends State<MovieCard> {
   @override
   Widget build(BuildContext context) {
+    print(widget.username);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: OpenContainer(
         closedElevation: 0,
         openElevation: 0,
         closedBuilder: (context, action) => buildMovieCard(context),
-        openBuilder: (context, action) => DetailsScreen(movie: movie),
+        openBuilder: (context, action) =>
+            DetailsScreen(movie: widget.movie, username: widget.username),
       ),
     );
   }
@@ -42,7 +47,7 @@ class MovieCard extends StatelessWidget {
                   boxShadow: [kDefaultShadow],
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: NetworkImage(movie
+                    image: NetworkImage(widget.movie
                         .poster_path), // here will be the image from database
                   ),
                 ),
@@ -51,7 +56,8 @@ class MovieCard extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
               child: Text(
-                movie.original_title, // here will be the title from database
+                widget.movie
+                    .original_title, // here will be the title from database
                 style: Theme.of(context)
                     .textTheme
                     .headline6
@@ -72,7 +78,7 @@ class MovieCard extends StatelessWidget {
             ),*/
                 SizedBox(width: kDefaultPadding / 2),
                 Text(
-                  "${movie.vote_average}", // here will be the rating from database
+                  "${widget.movie.vote_average}", // here will be the rating from database
                   style: Theme.of(context)
                       .textTheme
                       .headline6

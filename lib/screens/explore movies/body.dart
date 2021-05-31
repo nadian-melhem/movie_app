@@ -52,14 +52,13 @@ class _ExploreBody extends State<ExploreBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MovieCard(movie: item),
+        builder: (context) => MovieCard(widget.username, item),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    print("widget" + widget.username);
     return FutureBuilder<List<Movie>>(
         future: request.exploreMovie(widget.username),
         builder: (context, snapshot) {

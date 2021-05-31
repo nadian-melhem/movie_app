@@ -39,7 +39,7 @@ class _CategorylistState extends State<Categorylist> {
 
   int selectedCategory = 0;
   final TopMoviesRequest request = new TopMoviesRequest();
-  List<String> categories = ["Top Movies", "Recommended", "Explore"];
+  List<String> categories = ["Top Movies", "Recommend me", "Explore", "People"];
   @override
   Widget build(BuildContext context) {
     return Container(

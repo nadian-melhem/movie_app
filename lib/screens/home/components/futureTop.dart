@@ -7,6 +7,8 @@ import '../../../constants.dart';
 
 // ignore: must_be_immutable
 class TopFuture extends StatelessWidget {
+  final String username;
+  TopFuture(this.username);
   int selecteditem = 0;
   dynamic sdata;
   final TopMoviesRequest request = new TopMoviesRequest();
@@ -20,11 +22,9 @@ class TopFuture extends StatelessWidget {
       child: FutureBuilder<List<Movie>>(
           future: futureMovie,
           builder: (context, AsyncSnapshot snapshot) {
-            // print("tamer");
             if (snapshot.hasData) {
-              //  print("hiiiii");
               sdata = snapshot.data;
-              return new MovieCarousel(movies: snapshot.data);
+              return new MovieCarousel(snapshot.data, username);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }

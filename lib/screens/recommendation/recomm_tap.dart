@@ -41,7 +41,7 @@ class RecTapState extends State<RecTap> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MovieCard(movie: item),
+        builder: (context) => MovieCard(username, item),
       ),
     );
   }
@@ -49,7 +49,6 @@ class RecTapState extends State<RecTap> {
   getuserName() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     username = sharedPreferences.getString('user');
-    print(username + "hi");
   }
 
   @override

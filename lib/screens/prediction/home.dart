@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/screens/profile/body.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'body.dart';
 
-class Profile extends StatefulWidget {
-  _Profile createState() => _Profile();
+class Prediction extends StatefulWidget {
+  _Prediction createState() => _Prediction();
 }
 
-class _Profile extends State<Profile> {
+class _Prediction extends State<Prediction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

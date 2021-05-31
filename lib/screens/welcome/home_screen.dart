@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/registration_components/rounded_button.dart';
 import 'package:movie_app/screens/log_in/log_in.dart';
+import 'package:movie_app/screens/prediction/home.dart';
 import 'package:movie_app/screens/sign_up/sign_up.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -49,7 +50,16 @@ class HomeScreen extends StatelessWidget {
                     .caption
                     .copyWith(fontWeight: FontWeight.w600, color: kTextColor)),
             GestureDetector(
-              //onTap: ,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Prediction();
+                    },
+                  ),
+                );
+              },
               child: Text("Predict",
                   style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontWeight: FontWeight.bold, color: kTextColor)),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:movie_app/screens/explore%20people/person_tap.dart';
 import 'package:movie_app/screens/favourite/favourite_tap.dart';
 import 'package:movie_app/screens/profile/profile_input.dart';
 import 'package:movie_app/screens/recommendation/recomm_tap.dart';
@@ -62,7 +63,12 @@ class _Name extends State<Name> {
                     icon: Icon(Icons.people),
                     color: Colors.white,
                     iconSize: 40,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PersonTap(false)));
+                    },
                   ),
                 ]),
               )
@@ -73,7 +79,7 @@ class _Name extends State<Name> {
                 child: Stack(children: [
               Positioned(
                 top: 30,
-                right: 280,
+                right: 210,
                 child: Text(widget.username,
                     textAlign: TextAlign.left,
                     style: Theme.of(context).textTheme.headline5.copyWith(
@@ -90,8 +96,8 @@ class _Name extends State<Name> {
                   hintText: widget.username,
                   onChanged: (value) {
                     newUsername = value;
+                    //setUserName(widget.username);
                   },
-                  //onpressed: setUserName(widget.username),
                 ),
               )
             ]))),

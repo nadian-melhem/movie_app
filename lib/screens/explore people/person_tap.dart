@@ -1,17 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/httpFiles/explorePeople.dart';
-import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/models/person.dart';
 import 'package:movie_app/screens/explore%20people/person_card.dart';
 import 'package:movie_app/screens/explore%20people/person_list.dart';
-import 'package:movie_app/screens/home/components/movie_card.dart';
-import 'package:movie_app/screens/recommendation/recom_movie_list.dart';
-import 'package:flutter/services.dart';
-import 'package:movie_app/httpFiles/recommended.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 
 String title, username;
 
@@ -30,11 +23,12 @@ class PersonTapState extends State<PersonTap> {
     getuserName();
   }
 
-  void itemClick(String name) {
+  void itemClick(Person person) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PersonCard(name: name),
+        builder: (context) => PersonCard(
+            username: username, name: person.name, flag: widget.flag),
       ),
     );
   }
@@ -56,7 +50,7 @@ class PersonTapState extends State<PersonTap> {
               ),
               title: Center(
                   child: Text(
-                'Meet new People',
+                widget.flag ? 'Meet new People' : 'Followers',
                 style: TextStyle(color: kTextColor),
               )),
               backgroundColor: Colors.transparent,
@@ -69,22 +63,22 @@ class PersonTapState extends State<PersonTap> {
                 )),
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      child: FutureBuilder<List<String>>(
-                          future: request.fetchNames(username, widget.flag),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Expanded(
-                                  child: PeopleList(
-                                      names: snapshot.data,
-                                      itemClick: this.itemClick));
-                            } else if (snapshot.hasError) {
-                              return Text("${snapshot.error}");
-                            }
+                    FutureBuilder<List<Person>>(
+                        future: request.fetchNames(username, widget.flag),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            print("inside explorepersontap");
+                            return Expanded(
+                                child: PeopleList(
+                                    names: snapshot.data,
+                                    itemClick: this.itemClick,
+                                    flag: widget.flag));
+                          } else if (snapshot.hasError) {
+                            return Text("${snapshot.error}");
+                          }
 
-                            return CircularProgressIndicator();
-                          }),
-                    )
+                          return CircularProgressIndicator();
+                        }),
                   ],
                 ))));
   }
